@@ -7,6 +7,7 @@
 <body>
 
 <?php
+require_once ('header.php');
 // auth check
 session_start();
 
@@ -22,3 +23,6 @@ if (empty($_SESSION['userId'])) {
 
 </body>
 </html>
+<?php
+require_once 'footer.php';
+?>
