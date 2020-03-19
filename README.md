@@ -2,7 +2,7 @@
 
 Link - http://15.222.122.223/~Mitchell_T1100775/PHP-Assignment-3Part/home-page.php
 
-Current the website allows the user to view 4 pages.
+Currently the website allows the user to view 4 pages.
 
 Admin Page - This page is restricted to users who are logged in. 
 If you are not logged in then it will redirect you to the login page to do so.
