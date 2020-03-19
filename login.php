@@ -1,4 +1,5 @@
 <?php
+//Changes title and loads header
 $title = 'Login';
 require_once ('header.php');
 ?>
@@ -6,10 +7,12 @@ require_once ('header.php');
     <main class="container">
         <h1>Login</h1>
         <?php
+        // If the login is invalid, tell the user it is.
         if (!empty($_GET['invalid'])) {
             if ($_GET['invalid'] == "true") {
                 echo '<div class="alert alert-danger">Invalid Login</div>';
             }
+            // Default text.
             else {
                 echo '<div class="alert alert-info">Please enter your credentials</div>';
             }
@@ -33,7 +36,7 @@ require_once ('header.php');
             </div>
         </form>
     </main>
-
+<!--Load footer-->
 <?php
 require_once 'footer.php';
 ?>

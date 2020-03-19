@@ -1,4 +1,4 @@
-<!--LOAD HEADER-->
+<!--LOAD HEADER and change title-->
 <?php
 $title = 'Register';
 require_once ('header.php');

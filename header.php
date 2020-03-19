@@ -32,10 +32,12 @@
                 <?php
                 // access current session to check if user is authenticated
                 session_start();
+                // If user is logged in then display logout button as well as the user's username. (In the nav bar)
                 if (!empty($_SESSION['userId'])) {
                     echo '<li class="nav-item"><a class="nav-link" href="#">' . $_SESSION['username'] . '</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
                 }
+                // If the user is not logged in then display register and login buttons. (In the nav bar)
                 else {
                     echo '<li class="nav-item">
                         <a class="nav-link" href="register.php">Register</a>

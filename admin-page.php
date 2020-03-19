@@ -5,24 +5,22 @@
     <title>Admin Page</title>
 </head>
 <body>
-
+<!--LOAD HEADER-->
 <?php
 require_once ('header.php');
-// auth check
+// starts session
 session_start();
 
-// make this page private
+// make this page private, if user isn't logged in, redirect them to login.
 require_once 'auth.php';
-if (empty($_SESSION['userId'])) {
-    header('location:login.php');
-    exit();
-}
+
 ?>
 
 <p>This is the admin only page, Welcome fellow admin!</p>
 
 </body>
 </html>
+<!--LOAD FOOTER-->
 <?php
 require_once 'footer.php';
 ?>

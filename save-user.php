@@ -24,7 +24,7 @@ if (empty($password)) {
     echo 'Password is required<br />';
     $ok = false;
 }
-// if passwords dont match
+
 if ($password != $confirm) {
     echo 'Passwords must match<br />';
     $ok = false;
@@ -36,19 +36,21 @@ if ($ok) {
 
 
     try {
-        // connect
+        // connect to my database
         require_once 'db.php';
 
-        // duplicate check before insert
+        // Goes into database and checks to see if the username is already registered.
         $sql = "SELECT * FROM users WHERE username = :username";
         $cmd = $db->prepare($sql);
         $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
         $cmd->execute();
         $user = $cmd->fetch();
-
+        // If it is already there then it will not add it to the database again.
         if (!empty($user)) {
             echo 'Username already exists<br />';
-        } else {
+        }
+        // If it isn't already there then add it to the database.
+        else {
             // set up & run insert
             $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
             $cmd = $db->prepare($sql);
@@ -60,7 +62,7 @@ if ($ok) {
         // disconnect
         $db = null;
 
-        // redirect to login page
+        // redirect to login page after registering
         header('location:login.php');
     }
     // If for some reason we fail to save the user, give user error page.

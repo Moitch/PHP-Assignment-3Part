@@ -7,9 +7,10 @@
 <body>
 
 <?php
-session_start(); // access current user session
-session_unset(); // remove any session variables
-session_destroy(); // end the current session
+// Destroys all session variables and then redirects the user to login page.
+session_start();
+session_unset();
+session_destroy();
 header('location:login.php');
 ?>
 
