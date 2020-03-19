@@ -1,4 +1,4 @@
-# PHP-Assignment-3Part
+# PHP-Assignment-3Part (OPTION B)
 
 Link - http://15.222.122.223/~Mitchell_T1100775/PHP-Assignment-3Part/home-page.php
 
