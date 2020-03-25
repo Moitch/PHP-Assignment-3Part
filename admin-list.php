@@ -40,7 +40,7 @@ try {
 
         // only show delete to authenticated users
         if (!empty($_SESSION['userId'])) {
-            echo '<td><a href="delete-admin.php?userId=' . $value['userId'] . '" class="btn btn-danger"
+            echo '<td><a href="confirm-delete.php?userId=' . $value['userId'] . '" class="btn btn-danger"
                 onclick="return confirmDelete();">Delete</a></td>';
         }
 

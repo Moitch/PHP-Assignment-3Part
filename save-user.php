@@ -39,29 +39,16 @@ if ($ok) {
     try {
         // connect to my database
         require_once 'db.php';
-        $userId = $_GET['userId'];
-        // Goes into database and checks to see if the username is already registered.
-        $sql = "SELECT * FROM users WHERE userId = :userId";
+
+        $sql = "SELECT * FROM users WHERE username = :username";
         $cmd = $db->prepare($sql);
         $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
         $cmd->execute();
         $user = $cmd->fetch();
+
         // If it is already there then it will not add it to the database again.
         if (!empty($user)) {
-
-
-
-            $sql = "UPDATE users set username = :username WHERE userId = :userId";
-            $cmd = $db->prepare($sql);
-            $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
-            $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
-            $cmd->execute();
-
-            // disconnect
-            $db = null;
-
-            // redirect to admin list page after updating
-            header('location:admin-list.php');
+            echo "Username exists already <br />";
         }
         // If it isn't already there then add it to the database.
         else {

@@ -37,42 +37,36 @@ if($ok) {
     try {
         // connect to my database
         require_once 'db.php';
-//        $sql = "SELECT password FROM users WHERE userId = :userId";
-//        $cmd = $db->prepare($sql);
-//        $oldpassword = null;
-//        $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
-//        $cmd->bindParam(':password', $oldpassword, PDO::PARAM_STR, 255);
-//        $cmd->execute();
-//        $user = $cmd->fetch();
-//        $oldpassword = $user['password'];
-//
-//        if (!password_verify($oldpassword, $user["password"])){
-//            // the user has entered a invalid password
-//            header("location: login.php");
-//            exit();
-//
-//        }
-//        else{
-//            echo $password;
-//            $password = password_hash($password, PASSWORD_DEFAULT);
-//            echo $password;
-
-        $sql = "UPDATE users set username = :username WHERE userId = :userId AND WHERE password = :password";
+        $sql = "SELECT * FROM users WHERE userId = :userId";
         $cmd = $db->prepare($sql);
         $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
-        $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
         $cmd->execute();
-
-        // disconnect
-        $db = null;
-
-        // redirect to admin list page after updating
-        header('location:admin-list.php');
+        $user = $cmd->fetch();
 
 
-    } // If for some reason we fail to save the user, give user error page.
+        if (!password_verify($oldpassword, $user["password"])) {
+            // the user has entered a invalid password
+            header("location: login.php");
+            exit();
+
+        } else {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = "UPDATE users set username = :username, password = :password WHERE userId = :userId";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
+            $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
+            $cmd->execute();
+
+            // disconnect
+            $db = null;
+
+            // redirect to admin list page after updating
+            header('location:admin-list.php');
+
+        } // If for some reason we fail to save the user, give user error page.
+    }
     catch (Exception $e) {
         header('location:error.php?id='.$userId);
         exit();

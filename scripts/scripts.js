@@ -1,5 +1,5 @@
 function confirmDelete() {
-    return confirm('Are you sure you want to delete this?');
+    return prompt('Are you sure you want to delete this?','Write password here');
 }
 
 function comparePasswords() {

@@ -15,27 +15,45 @@ require_once 'auth.php';
 
 
 // parse the userId
-$artistId = $_GET['userId'];
+$userId = $_GET['userId'];
+$password = $_POST['password'];
 
 try {
     // connect
     require_once 'db.php';
 
-    // create the SQL DELETE command
-    $sql = "DELETE FROM users WHERE userId = :userId";
-
-    // pass the userId parameter
+    $sql = "SELECT * FROM users WHERE userId = :userId";
     $cmd = $db->prepare($sql);
     $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
-
-    // execute the deletion
     $cmd->execute();
+    $user = $cmd->fetch();
 
-    // disconnect
-    $db = null;
 
-    // redirect back to updated artists-list page
-    header('location:admin-list.php');
+    if (!password_verify($password, $user["password"])) {
+            // the user has entered a invalid password
+            header("location: error.php");
+            exit();
+
+    }
+
+    else {
+
+        // create the SQL DELETE command
+        $sql = "DELETE FROM users WHERE userId = :userId";
+
+        // pass the userId parameter
+        $cmd = $db->prepare($sql);
+        $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+        // execute the deletion
+        $cmd->execute();
+
+        // disconnect
+        $db = null;
+
+        // redirect back to updated artists-list page
+        header('location:admin-list.php');
+    }
 }
 catch (Exception $e) {
     header('location:error.php');

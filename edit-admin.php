@@ -42,7 +42,6 @@ $userId = $_GET['userId'];
         <fieldset class="form-group">
             <label for="oldpassword" class="col-md-2">Old Password:</label>
             <input type="password" name="oldpassword" id="oldpassword" required/>
-            <img id="showHideIcon" src="img/show.png" alt="Show/Hide Password" onclick="showHidePassword()" />
         </fieldset>
         <fieldset class="form-group">
             <label for="password" class="col-md-2">New Password:</label>
