@@ -21,12 +21,12 @@ try {
     $cmd = $db->prepare($query);
     $cmd->execute();
 
-    $artists = $cmd->fetchAll();
+    $user = $cmd->fetchAll();
 
     echo '<table class="table table-striped table-hover"><thead><th>Username</th><th></th></thead>';
 
     // 5. Use a foreach loop to iterate (cycle) through all the values in the $artists variable.  Inside this loop, use an echo command to display the name of each person.  See https://www.php.net/manual/en/control-structures.foreach.php for details.
-    foreach ($artists as $value) {
+    foreach ($user as $value) {
         // could use this but it's unclear and error prone: echo $value[1];
         echo '<tr>';
 

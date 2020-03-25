@@ -12,6 +12,7 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 $confirm = $_POST['confirm'];
+
 $ok = true;
 
 // validate inputs
@@ -38,7 +39,7 @@ if ($ok) {
     try {
         // connect to my database
         require_once 'db.php';
-
+        $userId = $_GET['userId'];
         // Goes into database and checks to see if the username is already registered.
         $sql = "SELECT * FROM users WHERE userId = :userId";
         $cmd = $db->prepare($sql);
@@ -47,6 +48,9 @@ if ($ok) {
         $user = $cmd->fetch();
         // If it is already there then it will not add it to the database again.
         if (!empty($user)) {
+
+
+
             $sql = "UPDATE users set username = :username WHERE userId = :userId";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
