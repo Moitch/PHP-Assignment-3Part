@@ -1,3 +1,7 @@
+function confirmDelete() {
+    return confirm('Are you sure you want to delete this?');
+}
+
 function comparePasswords() {
     // get the 2 password values from the form & reference the message element
     var pw1 = document.getElementById('password').value;

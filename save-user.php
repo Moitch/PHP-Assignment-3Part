@@ -40,14 +40,24 @@ if ($ok) {
         require_once 'db.php';
 
         // Goes into database and checks to see if the username is already registered.
-        $sql = "SELECT * FROM users WHERE username = :username";
+        $sql = "SELECT * FROM users WHERE userId = :userId";
         $cmd = $db->prepare($sql);
         $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
         $cmd->execute();
         $user = $cmd->fetch();
         // If it is already there then it will not add it to the database again.
         if (!empty($user)) {
-            echo 'Username already exists<br />';
+            $sql = "UPDATE users set username = :username WHERE userId = :userId";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
+            $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
+            $cmd->execute();
+
+            // disconnect
+            $db = null;
+
+            // redirect to admin list page after updating
+            header('location:admin-list.php');
         }
         // If it isn't already there then add it to the database.
         else {
@@ -57,13 +67,15 @@ if ($ok) {
             $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
             $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
             $cmd->execute();
+
+            // disconnect
+            $db = null;
+
+            // redirect to login page after registering
+            header('location:login.php');
         }
 
-        // disconnect
-        $db = null;
 
-        // redirect to login page after registering
-        header('location:login.php');
     }
     // If for some reason we fail to save the user, give user error page.
     catch (Exception $e) {

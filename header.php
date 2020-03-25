@@ -27,6 +27,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="admin-page.php">Admin Page</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin-list.php">Admin List</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <?php
