@@ -1,21 +1,22 @@
+*{
+
+    font-family:'Arial', sans-serif;
+}
+
 .btn-primary {
-    background-color: #132D8F;
+    background-color: #501B1D;
 }
 
 h1 {
-    color: #132D8F;
+    color: #501B1D;
 }
 
 td a {
-    color: #5871CC;
-}
-
-body {
-    font-family:'Montserrat', sans-serif;
+    color: #83677b;
 }
 
 .bg-custom {
-    background-color: #132D8F;
+    background-color: #501B1D;
 }
 
 html,
