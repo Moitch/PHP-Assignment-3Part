@@ -28,7 +28,7 @@ try {
     $cmd->execute();
     $user = $cmd->fetch();
 
-
+    // verifies the password
     if (!password_verify($password, $user["password"])) {
             // the user has entered a invalid password
             header("location: error.php");
@@ -51,7 +51,7 @@ try {
         // disconnect
         $db = null;
 
-        // redirect back to updated artists-list page
+        // redirect back to updated admin-list page
         header('location:admin-list.php');
     }
 }

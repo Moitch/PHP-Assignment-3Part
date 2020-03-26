@@ -1,5 +1,5 @@
 <?php
-$title = 'Artist Details';
+$title = 'Editing User';
 require_once ('header.php');
 
 // make this page private
@@ -21,8 +21,9 @@ $userId = $_GET['userId'];
     $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
     $cmd->execute();
 
-    // use fetch without a loop instead of fetchAll with a loop as we're only selecting a single record
+    // use fetch to select a single record
     $user = $cmd->fetch();
+
     $username = $user['username'];
     $password = $user['password'];
 

@@ -4,8 +4,6 @@ require_once ('header.php');
 
 session_start();
 
-require_once 'auth.php';
-
 ?>
 
     <h1>Admin List</h1>
@@ -24,12 +22,11 @@ try {
     $user = $cmd->fetchAll();
 
     echo '<table class="table table-striped table-hover"><thead><th>Username</th><th></th></thead>';
-
-    // 5. Use a foreach loop to iterate (cycle) through all the values in the $artists variable.  Inside this loop, use an echo command to display the name of each person.  See https://www.php.net/manual/en/control-structures.foreach.php for details.
+    // Create table rows for each user.
     foreach ($user as $value) {
-        // could use this but it's unclear and error prone: echo $value[1];
-        echo '<tr>';
 
+        echo '<tr>';
+        // If the user is logged in, allow them to edit users
         if (!empty($_SESSION['userId'])) {
             echo '<td><a href="edit-admin.php?userId=' . $value['userId'] . '">' . $value['username'] . '</a></td>';
         }
@@ -47,12 +44,11 @@ try {
         echo '</tr>';
     }
 
-    // 5a. End the HTML table
     echo '</table>';
-
-    // 6. Disconnect from the database
+    // disconnect
     $db = null;
 }
+// if error is found send user to error.php
 catch (Exception $e) {
     header('location:error.php');
     exit();

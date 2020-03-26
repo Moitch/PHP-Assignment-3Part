@@ -65,15 +65,16 @@ if($ok) {
             // redirect to admin list page after updating
             header('location:admin-list.php');
 
-        } // If for some reason we fail to save the user, give user error page.
+        } // If for some reason we fail to update the user, give user error page.
     }
     catch (Exception $e) {
-        header('location:error.php?id='.$userId);
+        header('location:error.php');
+//        header('location:error.php?id='.$userId); debug to check if userid was working
+
         exit();
     }
 }
-else
-    header('location:admin-page.php');
+
 ?>
 
 </body>
