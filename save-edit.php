@@ -9,7 +9,9 @@
 <body>
 
 <?php
+session_start();
 
+require_once 'auth.php';
 // store form inputs in variables
 $username = $_POST['username'];
 $oldpassword = $_POST['oldpassword'];
