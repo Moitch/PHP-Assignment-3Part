@@ -12,6 +12,7 @@ session_start();
 <?php
 
 try {
+    // Creates SQL Select statement and grabs what it finds.
     require_once 'db.php';
 
     $query = "SELECT * FROM users;";

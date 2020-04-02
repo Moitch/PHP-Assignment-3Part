@@ -1,6 +1,6 @@
 <!-- src: https://startbootstrap.com/snippets/sticky-footer-flexbox/ -->
 </main>
-<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+<footer id="sticky-footer" class="py-4 bg-custom text-white-50">
     <div class="container text-center">
         <small>Copyright &copy; 2020 - Mitchell Foley</small>
     </div>

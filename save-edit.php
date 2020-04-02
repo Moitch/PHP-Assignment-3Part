@@ -45,7 +45,7 @@ if($ok) {
         $cmd->execute();
         $user = $cmd->fetch();
 
-
+        // Verify password is the same.
         if (!password_verify($oldpassword, $user["password"])) {
             // the user has entered a invalid password
             header("location: login.php");

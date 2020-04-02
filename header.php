@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-<nav class="navbar navbar-expand-md bg-custom">
+<nav class="navbar navbar-expand-md bg-custom navbar-dark">
 
 
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+
 
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
@@ -42,12 +40,8 @@
                 </div>';
          }
           else{
-              echo 'Assignment 2';
+              echo "Mitchell's Website";
           }
-
-
-
-
 
             //sql query to select all from users
             $query = "SELECT * FROM pages;";
@@ -59,6 +53,7 @@
             //fetch all the data and store in users
             $pages = $cmd->fetchAll();
 
+            // For every page in my database, create a page in the public website.
             foreach ($pages as $value) {
                 if (empty($_SESSION['userId'])) {
 
@@ -74,7 +69,7 @@
 
             //if userId is not empty show Administrators in nav bar
             if(!empty($_SESSION['userId'])) {
-                echo '<ul class="navbar-nav">
+                echo '<ul class="navbar-nav text-white-50">
                            <li class="nav-item">
                             <a class="nav-link" href="admin-list.php">Administrators</a>
                            </li>
@@ -88,7 +83,7 @@
             }
             ?>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto text-white-50">
 
             <?php
             //check current user session

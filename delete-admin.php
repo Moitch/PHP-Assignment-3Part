@@ -21,7 +21,7 @@ $password = $_POST['password'];
 try {
     // connect
     require_once 'db.php';
-
+    // Create select statement and fetch the row it found.
     $sql = "SELECT * FROM users WHERE userId = :userId";
     $cmd = $db->prepare($sql);
     $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);

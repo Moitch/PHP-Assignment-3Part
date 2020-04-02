@@ -15,7 +15,7 @@ $pageId = $_GET['pageId'];
 // connect
 require_once 'db.php';
 
-// fetch the selected artist
+// fetch the selected page
 $sql = "SELECT * FROM pages WHERE pageId = :pageId";
 $cmd = $db->prepare($sql);
 $cmd->bindParam(':pageId', $pageId, PDO::PARAM_INT);
@@ -36,17 +36,17 @@ $db = null;
     <h1>Edit User</h1>
     <main class="container">
         <h1>Page Creation</h1>
-        <form method="post" action="save-page.php">
+        <form method="post" action="save-page-edit.php?pageId=<?php echo $pageId; ?>">
             <fieldset class="form-group">
                 <label for="pName" class="col-md-2">Page Title:</label>
-                <input name="pName" id="pName" required/>
+                <input name="pName" id="pName" required value="<?php echo $pName; ?>"/>
             </fieldset>
             <fieldset class="form-group">
                 <label for="content" class="col-md-2">Content:</label>
-                <textarea name="content" id="content" required maxlength="255" style="width: 800px">Enter Content</textarea>
+                <textarea name="content" id="content" required maxlength="255" style="width: 800px"><?php echo $content; ?></textarea>
             </fieldset>
             <div class="offset-md-2">
-                <input type="submit" value="Create Page" class="btn btn-info"/>
+                <input type="submit" value="Save Page" class="btn btn-info"/>
             </div>
         </form>
     </main>

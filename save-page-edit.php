@@ -9,6 +9,7 @@
 <?php
 
 // store form inputs in variables
+$pageId = $_GET['pageId'];
 $pName = $_POST['pName'];
 $content = $_POST['content'];
 
@@ -39,24 +40,24 @@ if ($ok) {
 
         // If it is already there then it will not add it to the database again.
         if (!empty($page)) {
-            echo "Page with the name $page[$pName] exists already <br />";
-        }
-        // If it isn't already there then add it to the database.
-        else {
-            // set up & run insert
-            $sql = "UPDATE pages set pName = :pName, content = :content WHERE userId = :userId";
+            $sql = "UPDATE pages set pName = :pName, content = :content WHERE pageId = :pageId";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':pName', $pName, PDO::PARAM_STR, 50);
             $cmd->bindParam(':content', $content, PDO::PARAM_STR, 255);
+            $cmd->bindParam(':pageId', $pageId, PDO::PARAM_INT);
+
             $cmd->execute();
 
             // disconnect
             $db = null;
 
-            // redirect to login page after registering
-            header('location:pages-list.php');
-        }
+            echo $pageId;
+            echo $pName;
+            echo $content;
 
+            header('location:pages-list.php');
+
+        }
 
     }
         // If for some reason we fail to save the user, give user error page.

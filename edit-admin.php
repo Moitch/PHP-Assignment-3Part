@@ -15,7 +15,7 @@ $userId = $_GET['userId'];
     // connect
     require_once 'db.php';
 
-    // fetch the selected artist
+    // fetch the selected user
     $sql = "SELECT * FROM users WHERE userId = :userId";
     $cmd = $db->prepare($sql);
     $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);

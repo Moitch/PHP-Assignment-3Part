@@ -35,7 +35,7 @@ try {
 
         $_SESSION['username'] = $username;
 
-        header('location:home-page.php');
+        header('location:admin-list.php');
     }
 
     $db = null;
