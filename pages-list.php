@@ -4,12 +4,16 @@ require_once ('header.php');
 
 session_start();
 
+require_once 'auth.php';
 ?>
 
     <h1>Page List</h1>
 
 
 <?php
+
+
+    echo '<a href="create-page.php">Add a New Page</a>';
 
 try {
     require_once 'db.php';

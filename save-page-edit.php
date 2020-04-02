@@ -39,7 +39,7 @@ if ($ok) {
 
         // If it is already there then it will not add it to the database again.
         if (!empty($page)) {
-            echo "Page with the name $pName exists already <br />";
+            echo "Page with the name $page[$pName] exists already <br />";
         }
         // If it isn't already there then add it to the database.
         else {
@@ -47,7 +47,7 @@ if ($ok) {
             $sql = "UPDATE pages set pName = :pName, content = :content WHERE userId = :userId";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':pName', $pName, PDO::PARAM_STR, 50);
-            $cmd->bindParam(':content', $pName, PDO::PARAM_STR, 255);
+            $cmd->bindParam(':content', $content, PDO::PARAM_STR, 255);
             $cmd->execute();
 
             // disconnect
