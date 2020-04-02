@@ -1,23 +1,33 @@
-# PHP-Assignment-3Part (OPTION B)
+# PHP-Assignment-3Part (OPTION B) FINISHED
 
-Link - http://15.222.122.223/~Mitchell_T1100775/PHP-Assignment-3Part/home-page.php
+Link - http://15.222.122.223/~Mitchell_T1100775/PHP-Assignment-3Part/login.php
 
-Currently the website allows the user to view 4 pages.
+The website has two sides, Public and Admin side.
 
-Admin Page - This page is restricted to users who are logged in. 
-If you are not logged in then it will redirect you to the login page to do so.
+Public 
+------------------------
+Users have access to: 
 
-Home Page - This page is accessable by user who goes to the page.
+Home, About, Services, Contact pages as well as any other pages that the admin users add.
 
-Login Page - Simple login page with username and password. Can hide/show password.
-Checks database to see if username and password match and then if they do it logs the user in.
+Login and Register page to register a user or log in.
 
-Register Page - Simple register page that makes user input email as well as a password.
-Will not register the same email twice.
+Admin
+------------------------
+Admins have access to a control panel which includes:
+
+Pages: Add/Edit/Delete/View List of Public pages.
+
+Users: Edit/Delete/View List of users.
+
+Logo: Upload a new header logo, must be jpg, jpeg, or png.
 
 Features
 ------------------------
-Navbar - Has Home Page, Admin Page, Login, Register, Logout, aswell as displays username if user is logged in.
+Header/Navbar - Has all the public pages, login, register. For admin side it contains all the admin control links.
 
 Footer.
 
+404 Error Page - Tells user they are in the wrong place.
+
+User validation, Error catching, etc.
